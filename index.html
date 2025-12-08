@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tastevibe | Fresh Recipes</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">🌿</span>
+        <span class="logo-text">Tastevibe</span>
+      </a>
+      <nav class="nav">
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a class="active" href="index.html">Home</a></li>
+          <li><a href="recipes.html">Recipes</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn ghost" href="#">Login</a>
+        <a class="btn primary" href="#">Sign up</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Fresh & Healthy</p>
+          <h1>Discover and share your favorite recipes</h1>
+          <p class="lead">Browse recipes, create your own, and share with the community. Simple, clean, and tasty.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="recipes.html">Explore recipes</a>
+            <a class="btn ghost" href="about.html">Learn more</a>
+          </div>
+          <div class="search-bar">
+            <input type="search" placeholder="Search recipes..." aria-label="Search recipes">
+            <button type="button" aria-label="Search">
+              <span class="icon-search"></span>
+            </button>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-bubble bubble-1"></div>
+          <div class="hero-bubble bubble-2"></div>
+          <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800&h=600&fit=crop" alt="Fresh pizza" class="hero-image" loading="eager">
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-cards container">
+      <div class="section-header">
+        <h2>What you can do</h2>
+        <p>Browse, create, categorize, and share delicious meals.</p>
+      </div>
+      <div class="card-grid">
+        <article class="feature-card">
+          <div class="icon icon-browse"></div>
+          <h3>Browse Recipes</h3>
+          <p>Discover a curated list of community favorites.</p>
+        </article>
+        <article class="feature-card">
+          <div class="icon icon-add"></div>
+          <h3>Add Your Recipe</h3>
+          <p>Share your own recipe with beautiful steps and imagery.</p>
+        </article>
+        <article class="feature-card">
+          <div class="icon icon-categories"></div>
+          <h3>Explore Categories</h3>
+          <p>Find dishes in categories like vegan, dessert, or quick bites.</p>
+        </article>
+        <article class="feature-card">
+          <div class="icon icon-community"></div>
+          <h3>Join Community</h3>
+          <p>Connect with other food lovers and exchange ideas.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="popular container">
+      <div class="section-header">
+        <h2>Popular Recipes</h2>
+        <p>Trending dishes from the Tastevibe community.</p>
+      </div>
+      <div class="recipe-grid">
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&h=400&fit=crop" alt="Salmon bowl" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill success">Healthy</span>
+              <span class="pill neutral">20 min</span>
+            </div>
+            <h3>Beautiful Salmon Bowl</h3>
+            <p>Fresh salmon with greens and grains for a nourishing meal.</p>
+            <a class="btn text" href="recipes.html">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=400&fit=crop" alt="Classic burger" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill neutral">30 min</span>
+              <span class="pill highlight">Comfort</span>
+            </div>
+            <h3>Classic Beef Burger</h3>
+            <p>Juicy patties stacked with fresh veggies and sauce.</p>
+            <a class="btn text" href="recipes.html">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?w=600&h=400&fit=crop" alt="Avocado toast" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill success">Vegan</span>
+              <span class="pill neutral">10 min</span>
+            </div>
+            <h3>Vegan Avocado Toast</h3>
+            <p>Creamy avocado on toasted sourdough with herbs.</p>
+            <a class="btn text" href="recipes.html">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=600&h=400&fit=crop" alt="Veggie scramble" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill neutral">15 min</span>
+              <span class="pill highlight">Breakfast</span>
+            </div>
+            <h3>Scrambled Veggies</h3>
+            <p>Wholesome veggies lightly scrambled for a quick start.</p>
+            <a class="btn text" href="recipes.html">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600&h=400&fit=crop" alt="Pasta" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill neutral">25 min</span>
+              <span class="pill highlight">Pasta</span>
+            </div>
+            <h3>Creamy Pesto Pasta</h3>
+            <p>Basil pesto tossed with al dente pasta and fresh vegetables.</p>
+            <a class="btn text" href="recipes.html">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=600&h=400&fit=crop" alt="Smoothie" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill success">Energy</span>
+              <span class="pill neutral">5 min</span>
+            </div>
+            <h3>Green Power Smoothie</h3>
+            <p>Spinach, banana, oats, and almond milk blend for energy boost.</p>
+            <a class="btn text" href="recipes.html">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=400&fit=crop" alt="Grilled chicken" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill success">Protein</span>
+              <span class="pill neutral">35 min</span>
+            </div>
+            <h3>Grilled Chicken Salad</h3>
+            <p>Perfectly grilled chicken with mixed greens and balsamic dressing.</p>
+            <a class="btn text" href="recipes.html">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=400&fit=crop" alt="Pizza" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill highlight">Comfort</span>
+              <span class="pill neutral">40 min</span>
+            </div>
+            <h3>Margherita Pizza</h3>
+            <p>Classic Italian pizza with fresh mozzarella, basil, and tomato sauce.</p>
+            <a class="btn text" href="recipes.html">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=400&fit=crop" alt="Buddha bowl" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill success">Vegan</span>
+              <span class="pill neutral">20 min</span>
+            </div>
+            <h3>Rainbow Buddha Bowl</h3>
+            <p>Colorful mix of vegetables, grains, and tahini dressing.</p>
+            <a class="btn text" href="recipes.html">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=600&h=400&fit=crop" alt="Quinoa bowl" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill success">Healthy</span>
+              <span class="pill neutral">25 min</span>
+            </div>
+            <h3>Quinoa Power Bowl</h3>
+            <p>Nutritious quinoa with roasted vegetables and avocado.</p>
+            <a class="btn text" href="recipes.html">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=600&h=400&fit=crop" alt="Tacos" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill highlight">Mexican</span>
+              <span class="pill neutral">30 min</span>
+            </div>
+            <h3>Fish Tacos</h3>
+            <p>Fresh fish tacos with cabbage slaw and lime crema.</p>
+            <a class="btn text" href="recipes.html">View recipe</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta container">
+      <div class="cta-card">
+        <div>
+          <h2>Share your recipe with the community</h2>
+          <p>Upload your dish, add steps, and inspire others.</p>
+        </div>
+        <a class="btn primary" href="contact.html">Get in touch</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="logo">
+          <span class="logo-mark">🌿</span>
+          <span class="logo-text">Tastevibe</span>
+        </a>
+        <p class="muted">A modern recipe sharing website where food lovers meet.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="recipes.html">Recipes</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Stay Updated</h4>
+        <form class="subscribe">
+          <input type="email" placeholder="Email address" aria-label="Email">
+          <button type="button" class="btn primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Tastevibe. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/menu.js"></script>
+  <script type="module" src="js/slider.js"></script>
+  <script type="module" src="js/effects.js"></script>
+  <script type="module" src="js/animations.js"></script>
+</body>
+</html>
+

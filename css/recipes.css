@@ -1,0 +1,38 @@
+.page-hero {
+  padding: 40px 0 24px;
+}
+
+.page-hero.light {
+  background: var(--green-100);
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.container {
+  padding: 40px 0;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.filters .btn {
+  width: 100%;
+}
+
+.recipe-listing {
+  padding: 40px 0 60px;
+}
+
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 24px 0;
+  }
+
+  .filters {
+    grid-template-columns: 1fr;
+  }
+}
+

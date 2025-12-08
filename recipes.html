@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipes | Tastevibe</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/recipes.css">
+  <link rel="stylesheet" href="css/recipe-detail.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">🌿</span>
+        <span class="logo-text">Tastevibe</span>
+      </a>
+      <nav class="nav">
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a class="active" href="recipes.html">Recipes</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn ghost" href="#">Login</a>
+        <a class="btn primary" href="#">Sign up</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero light">
+      <div class="container">
+        <p class="eyebrow">Recipes</p>
+        <h1>Find the perfect meal</h1>
+        <p class="lead">Filter recipes by category, prep time, and mood.</p>
+        <div class="filters">
+          <div class="filter-group">
+            <label for="search">Search</label>
+            <input id="search" type="search" placeholder="Search recipes">
+          </div>
+          <div class="filter-group">
+            <label for="category">Category</label>
+            <select id="category">
+              <option>All</option>
+              <option>Healthy</option>
+              <option>Vegan</option>
+              <option>Dessert</option>
+              <option>Breakfast</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="time">Prep Time</label>
+            <select id="time">
+              <option>Any</option>
+              <option>0-15 min</option>
+              <option>15-30 min</option>
+              <option>30+ min</option>
+            </select>
+          </div>
+          <button class="btn primary">Filter</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Recipes with Full Details -->
+    <section class="container" style="padding-top: 40px;">
+      <div class="section-header" style="margin-bottom: 40px;">
+        <h2>Featured Recipes</h2>
+        <p>Complete recipes with step-by-step instructions</p>
+      </div>
+      <!-- Classic Beef Burger -->
+      <article class="recipe-detail">
+        <div class="recipe-detail-header">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&h=600&fit=crop" alt="Classic Beef Burger" class="recipe-detail-image">
+          <div class="recipe-detail-info">
+            <div class="recipe-detail-meta">
+              <span class="pill highlight">Comfort</span>
+              <span class="pill neutral">30 min</span>
+              <span class="pill success">4 servings</span>
+            </div>
+            <h1>Classic Beef Burger</h1>
+            <p class="lead">Juicy, flavorful beef burgers with fresh vegetables and special sauce. Perfect for a weekend barbecue or family dinner.</p>
+            <div class="recipe-detail-stats">
+              <div class="stat-item">
+                <div class="stat-value">450</div>
+                <div class="stat-label">Calories</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">25g</div>
+                <div class="stat-label">Protein</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">Medium</div>
+                <div class="stat-label">Difficulty</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="recipe-section">
+          <h2>Ingredients</h2>
+          <ul class="ingredients-list">
+            <li>500g ground beef (80/20 blend)</li>
+            <li>4 burger buns</li>
+            <li>4 slices cheddar cheese</li>
+            <li>1 large tomato, sliced</li>
+            <li>1 red onion, sliced</li>
+            <li>4 lettuce leaves</li>
+            <li>4 pickles, sliced</li>
+            <li>2 tbsp mayonnaise</li>
+            <li>2 tbsp ketchup</li>
+            <li>1 tbsp mustard</li>
+            <li>Salt and black pepper to taste</li>
+            <li>2 tbsp vegetable oil</li>
+          </ul>
+        </div>
+        
+        <div class="recipe-section">
+          <h2>Instructions</h2>
+          <ol class="instructions-list">
+            <li>Divide the ground beef into 4 equal portions and shape into patties, about 1cm thick. Season both sides with salt and pepper.</li>
+            <li>Heat vegetable oil in a large skillet or grill pan over medium-high heat.</li>
+            <li>Cook the patties for 4-5 minutes on each side for medium doneness, or until desired doneness.</li>
+            <li>During the last minute of cooking, place a slice of cheese on each patty to melt.</li>
+            <li>While patties are cooking, toast the burger buns cut-side down in the pan until golden.</li>
+            <li>Mix mayonnaise, ketchup, and mustard to create the special sauce.</li>
+            <li>Spread the sauce on both halves of the buns.</li>
+            <li>Assemble the burgers: bottom bun, lettuce, patty with cheese, tomato slices, onion, pickles, and top bun.</li>
+            <li>Serve immediately while hot. Enjoy!</li>
+          </ol>
+        </div>
+      </article>
+
+      <!-- Creamy Pesto Pasta -->
+      <article class="recipe-detail">
+        <div class="recipe-detail-header">
+          <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800&h=600&fit=crop" alt="Creamy Pesto Pasta" class="recipe-detail-image">
+          <div class="recipe-detail-info">
+            <div class="recipe-detail-meta">
+              <span class="pill highlight">Pasta</span>
+              <span class="pill neutral">25 min</span>
+              <span class="pill success">4 servings</span>
+            </div>
+            <h1>Creamy Pesto Pasta</h1>
+            <p class="lead">Fresh basil pesto combined with cream creates a rich, flavorful sauce that coats every strand of pasta perfectly.</p>
+            <div class="recipe-detail-stats">
+              <div class="stat-item">
+                <div class="stat-value">520</div>
+                <div class="stat-label">Calories</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">18g</div>
+                <div class="stat-label">Protein</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">Easy</div>
+                <div class="stat-label">Difficulty</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="recipe-section">
+          <h2>Ingredients</h2>
+          <ul class="ingredients-list">
+            <li>400g pasta (penne or fusilli)</li>
+            <li>2 cups fresh basil leaves</li>
+            <li>3 cloves garlic</li>
+            <li>1/2 cup pine nuts</li>
+            <li>1/2 cup grated parmesan cheese</li>
+            <li>1/2 cup olive oil</li>
+            <li>1/2 cup heavy cream</li>
+            <li>Salt and black pepper to taste</li>
+            <li>Cherry tomatoes for garnish (optional)</li>
+          </ul>
+        </div>
+        
+        <div class="recipe-section">
+          <h2>Instructions</h2>
+          <ol class="instructions-list">
+            <li>Bring a large pot of salted water to a boil and cook pasta according to package directions until al dente.</li>
+            <li>While pasta cooks, make the pesto: In a food processor, combine basil, garlic, pine nuts, and parmesan cheese.</li>
+            <li>Pulse until coarsely chopped, then slowly drizzle in olive oil while processing until smooth.</li>
+            <li>Season pesto with salt and pepper to taste.</li>
+            <li>In a large pan, heat the heavy cream over medium heat until warm (do not boil).</li>
+            <li>Stir in the prepared pesto until well combined.</li>
+            <li>Drain the pasta, reserving 1/2 cup of pasta water.</li>
+            <li>Add pasta to the pan with pesto cream sauce, toss to coat. Add pasta water if needed to thin the sauce.</li>
+            <li>Garnish with cherry tomatoes and extra parmesan. Serve immediately.</li>
+          </ol>
+        </div>
+      </article>
+
+      <!-- Grilled Chicken Salad -->
+      <article class="recipe-detail">
+        <div class="recipe-detail-header">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=600&fit=crop" alt="Grilled Chicken Salad" class="recipe-detail-image">
+          <div class="recipe-detail-info">
+            <div class="recipe-detail-meta">
+              <span class="pill success">Healthy</span>
+              <span class="pill neutral">35 min</span>
+              <span class="pill success">2 servings</span>
+            </div>
+            <h1>Grilled Chicken Salad</h1>
+            <p class="lead">Tender grilled chicken breast served over a bed of fresh mixed greens with balsamic vinaigrette dressing.</p>
+            <div class="recipe-detail-stats">
+              <div class="stat-item">
+                <div class="stat-value">380</div>
+                <div class="stat-label">Calories</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">42g</div>
+                <div class="stat-label">Protein</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">Easy</div>
+                <div class="stat-label">Difficulty</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="recipe-section">
+          <h2>Ingredients</h2>
+          <ul class="ingredients-list">
+            <li>2 boneless, skinless chicken breasts</li>
+            <li>6 cups mixed greens (lettuce, spinach, arugula)</li>
+            <li>1 cup cherry tomatoes, halved</li>
+            <li>1/2 cucumber, sliced</li>
+            <li>1/4 red onion, thinly sliced</li>
+            <li>1/4 cup feta cheese, crumbled</li>
+            <li>2 tbsp olive oil</li>
+            <li>1 tbsp balsamic vinegar</li>
+            <li>1 tsp Dijon mustard</li>
+            <li>1 clove garlic, minced</li>
+            <li>Salt and black pepper to taste</li>
+            <li>Lemon juice (optional)</li>
+          </ul>
+        </div>
+        
+        <div class="recipe-section">
+          <h2>Instructions</h2>
+          <ol class="instructions-list">
+            <li>Season chicken breasts with salt, pepper, and a drizzle of olive oil. Let marinate for 15 minutes.</li>
+            <li>Preheat grill or grill pan to medium-high heat.</li>
+            <li>Grill chicken for 6-7 minutes per side, or until internal temperature reaches 165°F (74°C).</li>
+            <li>Remove chicken from grill and let rest for 5 minutes before slicing.</li>
+            <li>While chicken rests, prepare the dressing: whisk together olive oil, balsamic vinegar, Dijon mustard, garlic, salt, and pepper.</li>
+            <li>In a large bowl, combine mixed greens, cherry tomatoes, cucumber, and red onion.</li>
+            <li>Slice the grilled chicken and arrange on top of the salad.</li>
+            <li>Drizzle with balsamic vinaigrette and sprinkle with feta cheese.</li>
+            <li>Serve immediately with a squeeze of fresh lemon juice if desired.</li>
+          </ol>
+        </div>
+      </article>
+
+      <!-- Beautiful Salmon Bowl -->
+      <article class="recipe-detail">
+        <div class="recipe-detail-header">
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&h=600&fit=crop" alt="Salmon Bowl" class="recipe-detail-image">
+          <div class="recipe-detail-info">
+            <div class="recipe-detail-meta">
+              <span class="pill success">Healthy</span>
+              <span class="pill neutral">20 min</span>
+              <span class="pill success">2 servings</span>
+            </div>
+            <h1>Beautiful Salmon Bowl</h1>
+            <p class="lead">Fresh salmon with nutrient-rich greens, grains, and a tangy dressing. A perfect healthy meal that's both delicious and satisfying.</p>
+            <div class="recipe-detail-stats">
+              <div class="stat-item">
+                <div class="stat-value">485</div>
+                <div class="stat-label">Calories</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">38g</div>
+                <div class="stat-label">Protein</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">Easy</div>
+                <div class="stat-label">Difficulty</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="recipe-section">
+          <h2>Ingredients</h2>
+          <ul class="ingredients-list">
+            <li>2 salmon fillets (150g each)</li>
+            <li>1 cup cooked quinoa or brown rice</li>
+            <li>2 cups mixed greens (kale, spinach, arugula)</li>
+            <li>1 avocado, sliced</li>
+            <li>1/2 cup edamame beans</li>
+            <li>1/4 cup red cabbage, shredded</li>
+            <li>1 carrot, julienned</li>
+            <li>2 tbsp sesame seeds</li>
+            <li>2 tbsp soy sauce</li>
+            <li>1 tbsp rice vinegar</li>
+            <li>1 tbsp honey</li>
+            <li>1 tsp grated ginger</li>
+            <li>Salt and black pepper to taste</li>
+          </ul>
+        </div>
+        
+        <div class="recipe-section">
+          <h2>Instructions</h2>
+          <ol class="instructions-list">
+            <li>Preheat oven to 400°F (200°C). Season salmon fillets with salt and pepper.</li>
+            <li>Place salmon on a baking sheet and bake for 12-15 minutes, or until fish flakes easily.</li>
+            <li>While salmon cooks, prepare the dressing: whisk together soy sauce, rice vinegar, honey, and grated ginger.</li>
+            <li>Cook quinoa or brown rice according to package directions and let cool slightly.</li>
+            <li>Steam edamame beans for 3-4 minutes until tender.</li>
+            <li>Assemble the bowls: Start with a base of cooked grains, then add mixed greens.</li>
+            <li>Top with flaked salmon, avocado slices, edamame, red cabbage, and julienned carrot.</li>
+            <li>Drizzle with the soy-ginger dressing and sprinkle with sesame seeds.</li>
+            <li>Serve immediately and enjoy this nutritious, colorful meal!</li>
+          </ol>
+        </div>
+      </article>
+
+      <!-- Margherita Pizza -->
+      <article class="recipe-detail">
+        <div class="recipe-detail-header">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&h=600&fit=crop" alt="Margherita Pizza" class="recipe-detail-image">
+          <div class="recipe-detail-info">
+            <div class="recipe-detail-meta">
+              <span class="pill highlight">Comfort</span>
+              <span class="pill neutral">40 min</span>
+              <span class="pill success">4 servings</span>
+            </div>
+            <h1>Margherita Pizza</h1>
+            <p class="lead">Classic Italian pizza with fresh mozzarella, basil, and simple tomato sauce. Simple ingredients that create an unforgettable flavor.</p>
+            <div class="recipe-detail-stats">
+              <div class="stat-item">
+                <div class="stat-value">320</div>
+                <div class="stat-label">Calories</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">15g</div>
+                <div class="stat-label">Protein</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-value">Medium</div>
+                <div class="stat-label">Difficulty</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="recipe-section">
+          <h2>Ingredients</h2>
+          <ul class="ingredients-list">
+            <li>500g pizza dough (store-bought or homemade)</li>
+            <li>1/2 cup tomato sauce</li>
+            <li>200g fresh mozzarella cheese, sliced</li>
+            <li>1/4 cup fresh basil leaves</li>
+            <li>2 tbsp olive oil</li>
+            <li>2 cloves garlic, minced</li>
+            <li>Salt and black pepper to taste</li>
+            <li>Cornmeal for dusting (optional)</li>
+          </ul>
+        </div>
+        
+        <div class="recipe-section">
+          <h2>Instructions</h2>
+          <ol class="instructions-list">
+            <li>Preheat oven to 475°F (245°C). If using a pizza stone, place it in the oven while preheating.</li>
+            <li>On a floured surface, stretch or roll the pizza dough into a 12-inch circle.</li>
+            <li>Transfer dough to a pizza pan or parchment paper dusted with cornmeal.</li>
+            <li>Mix tomato sauce with minced garlic, salt, and pepper. Spread evenly over the dough, leaving a 1-inch border.</li>
+            <li>Arrange mozzarella slices evenly over the sauce.</li>
+            <li>Drizzle with olive oil and season with a pinch of salt.</li>
+            <li>Bake for 12-15 minutes, or until crust is golden and cheese is bubbly and slightly browned.</li>
+            <li>Remove from oven and immediately top with fresh basil leaves.</li>
+            <li>Let cool for 2-3 minutes before slicing and serving. Enjoy your homemade Margherita pizza!</li>
+          </ol>
+        </div>
+      </article>
+    </section>
+
+    <!-- Recipe Cards Grid -->
+    <section class="container recipe-listing">
+      <div class="recipe-grid">
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&h=400&fit=crop" alt="Salmon bowl" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill success">Healthy</span>
+              <span class="pill neutral">20 min</span>
+            </div>
+            <h3>Beautiful Salmon Bowl</h3>
+            <p>Fresh salmon with greens and grains.</p>
+            <a class="btn text" href="#">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=400&fit=crop" alt="Burger" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill neutral">30 min</span>
+              <span class="pill highlight">Comfort</span>
+            </div>
+            <h3>Classic Beef Burger</h3>
+            <p>Juicy patties stacked with fresh veggies.</p>
+            <a class="btn text" href="#">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?w=600&h=400&fit=crop" alt="Avocado toast" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill success">Vegan</span>
+              <span class="pill neutral">10 min</span>
+            </div>
+            <h3>Vegan Avocado Toast</h3>
+            <p>Creamy avocado on toasted sourdough.</p>
+            <a class="btn text" href="#">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=600&h=400&fit=crop" alt="Veggie scramble" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill neutral">15 min</span>
+              <span class="pill highlight">Breakfast</span>
+            </div>
+            <h3>Scrambled Veggies</h3>
+            <p>Wholesome veggies lightly scrambled.</p>
+            <a class="btn text" href="#">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600&h=400&fit=crop" alt="Pasta" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill neutral">25 min</span>
+              <span class="pill highlight">Pasta</span>
+            </div>
+            <h3>Creamy Pesto Pasta</h3>
+            <p>Basil pesto tossed with al dente pasta and veggies.</p>
+            <a class="btn text" href="#">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?w=600&h=400&fit=crop" alt="Smoothie" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill success">Energy</span>
+              <span class="pill neutral">5 min</span>
+            </div>
+            <h3>Green Power Smoothie</h3>
+            <p>Spinach, banana, oats, and almond milk blend.</p>
+            <a class="btn text" href="#">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=400&fit=crop" alt="Grilled chicken" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill success">Protein</span>
+              <span class="pill neutral">35 min</span>
+            </div>
+            <h3>Grilled Chicken Salad</h3>
+            <p>Perfectly grilled chicken with mixed greens and balsamic dressing.</p>
+            <a class="btn text" href="#">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=400&fit=crop" alt="Pizza" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill highlight">Comfort</span>
+              <span class="pill neutral">40 min</span>
+            </div>
+            <h3>Margherita Pizza</h3>
+            <p>Classic Italian pizza with fresh mozzarella, basil, and tomato sauce.</p>
+            <a class="btn text" href="#">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&h=400&fit=crop" alt="Buddha bowl" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill success">Vegan</span>
+              <span class="pill neutral">20 min</span>
+            </div>
+            <h3>Rainbow Buddha Bowl</h3>
+            <p>Colorful mix of vegetables, grains, and tahini dressing.</p>
+            <a class="btn text" href="#">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=600&h=400&fit=crop" alt="Quinoa bowl" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill success">Healthy</span>
+              <span class="pill neutral">25 min</span>
+            </div>
+            <h3>Quinoa Power Bowl</h3>
+            <p>Nutritious quinoa with roasted vegetables and avocado.</p>
+            <a class="btn text" href="#">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=600&h=400&fit=crop" alt="Tacos" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill highlight">Mexican</span>
+              <span class="pill neutral">30 min</span>
+            </div>
+            <h3>Fish Tacos</h3>
+            <p>Fresh fish tacos with cabbage slaw and lime crema.</p>
+            <a class="btn text" href="#">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&h=400&fit=crop" alt="Pancakes" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill highlight">Breakfast</span>
+              <span class="pill neutral">20 min</span>
+            </div>
+            <h3>Fluffy Pancakes</h3>
+            <p>Light and airy pancakes with maple syrup and fresh berries.</p>
+            <a class="btn text" href="#">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1546069901-d5bfd2cbfb1f?w=600&h=400&fit=crop" alt="Soup" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill success">Healthy</span>
+              <span class="pill neutral">30 min</span>
+            </div>
+            <h3>Vegetable Soup</h3>
+            <p>Warm and comforting vegetable soup with herbs and spices.</p>
+            <a class="btn text" href="#">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&h=400&fit=crop" alt="Sushi" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill success">Healthy</span>
+              <span class="pill neutral">45 min</span>
+            </div>
+            <h3>Fresh Sushi Rolls</h3>
+            <p>Homemade sushi rolls with fresh fish and vegetables.</p>
+            <a class="btn text" href="#">View recipe</a>
+          </div>
+        </article>
+        <article class="recipe-card reveal">
+          <img src="https://images.unsplash.com/photo-1506084868230-bb9d95c24759?w=600&h=400&fit=crop" alt="Ramen" loading="lazy">
+          <div class="recipe-body">
+            <div class="recipe-meta">
+              <span class="pill highlight">Comfort</span>
+              <span class="pill neutral">35 min</span>
+            </div>
+            <h3>Miso Ramen</h3>
+            <p>Rich miso broth with noodles, egg, and vegetables.</p>
+            <a class="btn text" href="#">View recipe</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="logo">
+          <span class="logo-mark">🌿</span>
+          <span class="logo-text">Tastevibe</span>
+        </a>
+        <p class="muted">A modern recipe sharing website where food lovers meet.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="recipes.html">Recipes</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Stay Updated</h4>
+        <form class="subscribe">
+          <input type="email" placeholder="Email address" aria-label="Email">
+          <button type="button" class="btn primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Tastevibe. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/menu.js"></script>
+  <script type="module" src="js/effects.js"></script>
+  <script type="module" src="js/animations.js"></script>
+</body>
+</html>
+

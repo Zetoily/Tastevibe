@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Tastevibe</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">🌿</span>
+        <span class="logo-text">Tastevibe</span>
+      </a>
+      <nav class="nav">
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="recipes.html">Recipes</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a class="active" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a class="btn ghost" href="#">Login</a>
+        <a class="btn primary" href="#">Sign up</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Get in touch</p>
+          <h1>We’d love to hear from you</h1>
+          <p class="lead">Questions, suggestions, or partnership ideas? Drop us a line and we’ll respond soon.</p>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-bubble bubble-1"></div>
+          <div class="hero-bubble bubble-2"></div>
+          <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800&h=600&fit=crop" alt="Contact" class="hero-image" loading="eager">
+        </div>
+      </div>
+    </section>
+
+    <section class="contact container">
+      <div class="contact-card">
+        <h2>Send a message</h2>
+        <form class="contact-form">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" required>
+          </div>
+          <div class="field">
+            <label for="topic">Topic</label>
+            <select id="topic">
+              <option>General</option>
+              <option>Support</option>
+              <option>Partnership</option>
+              <option>Feedback</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" rows="5" placeholder="Tell us more"></textarea>
+          </div>
+          <button type="submit" class="btn primary">Send message</button>
+        </form>
+      </div>
+      <div class="contact-details">
+        <div class="detail">
+          <h3>Email</h3>
+          <p>hello@tastevibe.com</p>
+        </div>
+        <div class="detail">
+          <h3>Phone</h3>
+          <p>+90 (500) 123-4567</p>
+        </div>
+        <div class="detail">
+          <h3>Address</h3>
+          <p>123 Flavor Street, Kitchen City</p>
+        </div>
+        <div class="map-placeholder">
+          <p>Map placeholder</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="logo">
+          <span class="logo-mark">🌿</span>
+          <span class="logo-text">Tastevibe</span>
+        </a>
+        <p class="muted">A modern recipe sharing website where food lovers meet.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="recipes.html">Recipes</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Stay Updated</h4>
+        <form class="subscribe">
+          <input type="email" placeholder="Email address" aria-label="Email">
+          <button type="button" class="btn primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Tastevibe. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/menu.js"></script>
+  <script type="module" src="js/effects.js"></script>
+  <script type="module" src="js/animations.js"></script>
+</body>
+</html>
+

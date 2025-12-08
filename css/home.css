@@ -1,0 +1,66 @@
+.feature-cards {
+  padding: 40px 0;
+}
+
+.feature-card {
+  position: relative;
+}
+
+.feature-card .icon {
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.feature-card:hover .icon {
+  transform: scale(1.1) rotate(5deg);
+  background: var(--green-500);
+}
+
+.popular {
+  padding: 20px 0 60px;
+}
+
+.popular .recipe-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+.popular .recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.popular .recipe-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(47, 141, 70, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.popular .recipe-card:hover::after {
+  opacity: 1;
+}
+
+.cta {
+  padding-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+  .feature-cards {
+    padding: 24px 0;
+  }
+
+  .popular {
+    padding: 10px 0 40px;
+  }
+}
+
