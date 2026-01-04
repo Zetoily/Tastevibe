@@ -135,6 +135,8 @@ const initRippleEffect = () => {
       setTimeout(() => ripple.remove(), 600);
     });
   });
+  // ensure ripple elements don't interfere with modal button clicks
+  buttons.forEach(btn => btn.style.position = btn.style.position || 'relative');
 };
 
 // Search functionality
@@ -279,4 +281,79 @@ document.addEventListener("DOMContentLoaded", () => {
   initFilters();
   initHeaderScroll();
   initCounters();
+  initModals();
 });
+
+// Modal handling: open/close in-page dialogs
+function initModals() {
+  const openers = document.querySelectorAll('[data-modal]');
+  const dialogs = document.querySelectorAll('dialog');
+  console.log('initModals: running', {openers: openers.length, dialogs: dialogs.length});
+
+  const openModal = (selector) => {
+    const dlg = document.querySelector(selector);
+    if (!dlg) return;
+    try {
+      if (typeof dlg.showModal === 'function') dlg.showModal();
+      else dlg.setAttribute('open', '');
+      dlg.querySelector('input, textarea, select')?.focus();
+    } catch (err) {
+      // fallback: add visible class
+      dlg.setAttribute('open', '');
+    }
+  };
+
+  const closeModal = (dlg) => {
+    if (!dlg) return;
+    try {
+      if (typeof dlg.close === 'function') dlg.close();
+      else dlg.removeAttribute('open');
+    } catch (err) {
+      dlg.removeAttribute('open');
+    }
+  };
+
+  openers.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const selector = btn.dataset.modal;
+      console.log('modal opener clicked', {selector});
+      if (!selector) return;
+      e.preventDefault();
+      openModal(selector);
+    });
+  });
+
+  dialogs.forEach((dlg) => {
+    // clicking on backdrop area (dialog element itself) should close
+    dlg.addEventListener('click', (e) => {
+      if (e.target === dlg) {
+        console.log('dialog backdrop click, closing', dlg.id);
+        closeModal(dlg);
+      }
+    });
+    const closers = dlg.querySelectorAll('.close, .modal-close');
+    console.log('dialog closers found', {id: dlg.id, count: closers.length});
+    closers.forEach((btn) => btn.addEventListener('click', () => closeModal(dlg)));
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') backdrops.forEach(b => b.classList.contains('show') && closeModal(b));
+  });
+
+  // Prevent real submission for demo; show a simple confirmation and close
+  const forms = document.querySelectorAll('#loginForm, #signupForm, #addRecipeForm, #communityForm');
+  forms.forEach((form) => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const backdrop = form.closest('.modal-backdrop');
+      closeModal(backdrop);
+      // small confirmation (could be replaced by real handling)
+      const msg = document.createElement('div');
+      msg.className = 'toast';
+      msg.textContent = 'Thanks! (This is a frontend demo)';
+      document.body.appendChild(msg);
+      setTimeout(() => msg.remove(), 2400);
+    });
+  });
+};
+

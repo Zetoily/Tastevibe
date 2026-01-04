@@ -27,8 +27,8 @@
         </ul>
       </nav>
       <div class="header-actions">
-        <a class="btn ghost" href="#">Login</a>
-        <a class="btn primary" href="#">Sign up</a>
+        <button class="btn ghost" type="button" data-modal="#loginModal" onclick="(function(d){d=document.getElementById('loginModal'); if(d){ if(typeof d.showModal==='function') d.showModal(); else d.setAttribute('open','');}})();">Login</button>
+        <button class="btn primary" type="button" data-modal="#signupModal" onclick="(function(d){d=document.getElementById('signupModal'); if(d){ if(typeof d.showModal==='function') d.showModal(); else d.setAttribute('open','');}})();">Sign up</button>
       </div>
     </div>
   </header>
@@ -71,7 +71,7 @@
           <p>Discover a curated list of community favorites.</p>
         </article>
         <article class="feature-card">
-          <div class="icon icon-add"></div>
+          <button class="icon icon-add icon-btn" aria-label="Add your recipe" onclick="(function(d){d=document.getElementById('addRecipeModal'); if(d){ if(typeof d.showModal==='function') d.showModal(); else d.setAttribute('open','');}})();">➕</button>
           <h3>Add Your Recipe</h3>
           <p>Share your own recipe with beautiful steps and imagery.</p>
         </article>
@@ -81,7 +81,7 @@
           <p>Find dishes in categories like vegan, dessert, or quick bites.</p>
         </article>
         <article class="feature-card">
-          <div class="icon icon-community"></div>
+          <button class="icon icon-community icon-btn" aria-label="Join community" onclick="(function(d){d=document.getElementById('communityModal'); if(d){ if(typeof d.showModal==='function') d.showModal(); else d.setAttribute('open','');}})();">👥</button>
           <h3>Join Community</h3>
           <p>Connect with other food lovers and exchange ideas.</p>
         </article>
@@ -278,11 +278,112 @@
     </div>
   </footer>
 
-  <script type="module" src="js/main.js"></script>
-  <script type="module" src="js/menu.js"></script>
-  <script type="module" src="js/slider.js"></script>
-  <script type="module" src="js/effects.js"></script>
-  <script type="module" src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/slider.js"></script>
+  <script src="js/effects.js"></script>
+  <script src="js/animations.js"></script>
+  <!-- Dialog-based popups -->
+  <style>
+    dialog {
+      max-width:720px;
+      width:90%;
+      border-radius:var(--radius-md);
+      padding:22px;
+      border:none;
+      box-shadow:var(--shadow-soft);
+      background:var(--white);
+      color:var(--gray-900);
+      font: inherit;
+    }
+    dialog::backdrop {background:rgba(15,23,42,0.55)}
+    dialog .close {
+      position:absolute;right:14px;top:14px;border:none;background:transparent;font-size:20px;cursor:pointer;color:var(--gray-700)
+    }
+    dialog h2 {margin-top:0;color:var(--gray-900)}
+    dialog form {display:grid;gap:12px;margin-top:6px}
+    dialog input[type="text"], dialog input[type="email"], dialog input[type="password"], dialog textarea, dialog select {
+      width:100%;padding:12px;border:1px solid var(--gray-200);border-radius:var(--radius-sm);background:var(--white);
+    }
+    dialog .row {display:flex;gap:12px}
+    dialog .actions {display:flex;gap:8px;justify-content:flex-end;margin-top:8px}
+    dialog .actions .btn {padding:10px 14px;border-radius:10px}
+    dialog .actions .btn.ghost {background:transparent;border-color:var(--gray-200)}
+    dialog .actions .btn.primary {background:var(--green-600);box-shadow:0 8px 20px rgba(47,141,70,0.12)}
+    .toast {position:fixed;right:20px;bottom:20px;background:var(--gray-900);color:var(--white);padding:10px 14px;border-radius:10px;box-shadow:var(--shadow-soft);z-index:9999}
+    @media (max-width:600px){dialog{padding:16px;width:96%}dialog .row{flex-direction:column}}
+    /* Icon button used inside feature cards */
+    .icon-btn{
+      width:56px;height:56px;border-radius:12px;border:none;display:inline-flex;align-items:center;justify-content:center;font-size:22px;background:linear-gradient(180deg,var(--green-100),#f4fbf5);color:var(--green-600);box-shadow:0 8px 20px rgba(47,141,70,0.06);cursor:pointer;margin-bottom:12px
+    }
+    .icon-btn:focus{outline:2px solid rgba(59,161,87,0.18)}
+  </style>
+
+  <dialog id="loginModal" aria-labelledby="loginTitle">
+    <button class="close" aria-label="Close" onclick="this.closest('dialog').close()">✕</button>
+    <h2 id="loginTitle">Login</h2>
+    <form id="loginForm" onsubmit="event.preventDefault(); this.closest('dialog').close(); (function(){const t=document.createElement('div'); t.className='toast'; t.textContent='Signed in (demo)'; document.body.appendChild(t); setTimeout(()=>t.remove(),2000); })();">
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <div class="actions">
+        <button type="button" class="btn ghost modal-close" onclick="this.closest('dialog').close()">Cancel</button>
+        <button type="submit" class="btn primary">Sign in</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="signupModal" aria-labelledby="signupTitle">
+    <button class="close" aria-label="Close" onclick="this.closest('dialog').close()">✕</button>
+    <h2 id="signupTitle">Sign up</h2>
+    <form id="signupForm" onsubmit="event.preventDefault(); this.closest('dialog').close(); (function(){const t=document.createElement('div'); t.className='toast'; t.textContent='Account created (demo)'; document.body.appendChild(t); setTimeout(()=>t.remove(),2000); })();">
+      <input type="text" name="name" placeholder="Full name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <div class="actions">
+        <button type="button" class="btn ghost modal-close" onclick="this.closest('dialog').close()">Cancel</button>
+        <button type="submit" class="btn primary">Create account</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="addRecipeModal" aria-labelledby="addRecipeTitle">
+    <button class="close" aria-label="Close" onclick="this.closest('dialog').close()">✕</button>
+    <h2 id="addRecipeTitle">Add a Recipe</h2>
+    <form id="addRecipeForm" onsubmit="event.preventDefault(); this.closest('dialog').close(); (function(){const t=document.createElement('div'); t.className='toast'; t.textContent='Recipe submitted (demo)'; document.body.appendChild(t); setTimeout(()=>t.remove(),2000); })();">
+      <input type="text" name="title" placeholder="Recipe title" required>
+      <input type="text" name="image" placeholder="Image URL (optional)">
+      <div class="row">
+        <input type="text" name="time" placeholder="Time (e.g., 20 min)">
+        <select name="category">
+          <option value="">Category</option>
+          <option>Vegan</option>
+          <option>Dessert</option>
+          <option>Main</option>
+          <option>Breakfast</option>
+        </select>
+      </div>
+      <textarea name="ingredients" rows="4" placeholder="Ingredients (one per line)"></textarea>
+      <textarea name="steps" rows="6" placeholder="Preparation steps"></textarea>
+      <div class="actions">
+        <button type="button" class="btn ghost modal-close" onclick="this.closest('dialog').close()">Cancel</button>
+        <button type="submit" class="btn primary">Submit recipe</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="communityModal" aria-labelledby="communityTitle">
+    <button class="close" aria-label="Close" onclick="this.closest('dialog').close()">✕</button>
+    <h2 id="communityTitle">Join the Community</h2>
+    <form id="communityForm" onsubmit="event.preventDefault(); this.closest('dialog').close(); (function(){const t=document.createElement('div'); t.className='toast'; t.textContent='Welcome to the community (demo)'; document.body.appendChild(t); setTimeout(()=>t.remove(),2000); })();">
+      <input type="text" name="name" placeholder="Full name" required>
+      <input type="email" name="email" placeholder="Email (optional)">
+      <textarea name="about" rows="4" placeholder="Tell us about your cooking interests"></textarea>
+      <div class="actions">
+        <button type="button" class="btn ghost modal-close" onclick="this.closest('dialog').close()">Cancel</button>
+        <button type="submit" class="btn primary">Join</button>
+      </div>
+    </form>
+  </dialog>
 </body>
 </html>
 
