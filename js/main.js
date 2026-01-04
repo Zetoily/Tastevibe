@@ -142,11 +142,12 @@ const initRippleEffect = () => {
 // Search functionality
 const initSearch = () => {
   const searchInput = document.querySelector(".search-bar input, #search");
-  const recipeCards = document.querySelectorAll(".recipe-card");
   
-  if (searchInput && recipeCards.length > 0) {
+  if (searchInput) {
     searchInput.addEventListener("input", (e) => {
       const query = e.target.value.toLowerCase().trim();
+      const recipeCards = document.querySelectorAll(".recipe-card");
+      if (recipeCards.length === 0) return;
       
       recipeCards.forEach((card) => {
         const title = card.querySelector("h3")?.textContent.toLowerCase() || "";
@@ -169,12 +170,12 @@ const initFilters = () => {
   const filterBtn = document.querySelector(".filters .btn.primary");
   const categorySelect = document.getElementById("category");
   const timeSelect = document.getElementById("time");
-  const recipeCards = document.querySelectorAll(".recipe-card");
   
-  if (filterBtn && recipeCards.length > 0) {
-    const applyFilters = () => {
-      const category = categorySelect?.value || "All";
-      const time = timeSelect?.value || "Any";
+  const applyFilters = () => {
+    const recipeCards = document.querySelectorAll(".recipe-card");
+    if (recipeCards.length === 0) return;
+    const category = categorySelect?.value || "All";
+    const time = timeSelect?.value || "Any";
       
       recipeCards.forEach((card) => {
         let show = true;
@@ -205,15 +206,14 @@ const initFilters = () => {
           card.style.display = "none";
         }
       });
-    };
-    
-    if (filterBtn) {
-      filterBtn.addEventListener("click", applyFilters);
-    }
-    
-    if (categorySelect) categorySelect.addEventListener("change", applyFilters);
-    if (timeSelect) timeSelect.addEventListener("change", applyFilters);
+  };
+  
+  if (filterBtn) {
+    filterBtn.addEventListener("click", applyFilters);
   }
+  
+  if (categorySelect) categorySelect.addEventListener("change", applyFilters);
+  if (timeSelect) timeSelect.addEventListener("change", applyFilters);
 };
 
 // Header scroll effect
@@ -269,6 +269,8 @@ const initCounters = () => {
 
 // Initialize all effects
 document.addEventListener("DOMContentLoaded", () => {
+  window.RecipeDB?.ensureSeeded?.();
+  renderUserRecipes();
   onScrollReveal();
   window.addEventListener("scroll", onScrollReveal);
   initSmoothScroll();
@@ -282,7 +284,17 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeaderScroll();
   initCounters();
   initModals();
+  initRecipeForms();
 });
+
+// Show a quick toast message
+function showToast(message) {
+  const msg = document.createElement("div");
+  msg.className = "toast";
+  msg.textContent = message;
+  document.body.appendChild(msg);
+  setTimeout(() => msg.remove(), 2400);
+}
 
 // Modal handling: open/close in-page dialogs
 function initModals() {
@@ -337,23 +349,159 @@ function initModals() {
   });
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') backdrops.forEach(b => b.classList.contains('show') && closeModal(b));
+    if (e.key === 'Escape') dialogs.forEach((dlg) => closeModal(dlg));
   });
 
   // Prevent real submission for demo; show a simple confirmation and close
-  const forms = document.querySelectorAll('#loginForm, #signupForm, #addRecipeForm, #communityForm');
+  const forms = document.querySelectorAll('#loginForm, #signupForm, #communityForm');
   forms.forEach((form) => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const backdrop = form.closest('.modal-backdrop');
       closeModal(backdrop);
       // small confirmation (could be replaced by real handling)
-      const msg = document.createElement('div');
-      msg.className = 'toast';
-      msg.textContent = 'Thanks! (This is a frontend demo)';
-      document.body.appendChild(msg);
-      setTimeout(() => msg.remove(), 2400);
+      showToast('Thanks! (This is a frontend demo)');
     });
   });
 };
 
+// Render user/local recipes into any section that declares data-user-recipes
+function renderUserRecipes() {
+  if (!window.RecipeDB) return;
+  const sections = document.querySelectorAll("[data-user-recipes]");
+  if (sections.length === 0) return;
+
+  const recipes = window.RecipeDB.getAll();
+
+  sections.forEach((section) => {
+    const grid = section.querySelector("[data-recipes-grid]");
+    const empty = section.querySelector("[data-empty-state]");
+    if (!grid) return;
+
+    grid.innerHTML = "";
+
+    if (!recipes || recipes.length === 0) {
+      if (empty) empty.style.display = "";
+      return;
+    }
+
+    if (empty) empty.style.display = "none";
+
+    recipes.forEach((recipe) => {
+      const card = document.createElement("article");
+      card.className = "recipe-card reveal user-recipe";
+
+      const img = document.createElement("img");
+      img.loading = "lazy";
+      img.src = recipe.image || "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=600&h=400&fit=crop";
+      img.alt = recipe.title || "Recipe photo";
+
+      const body = document.createElement("div");
+      body.className = "recipe-body";
+
+      const meta = document.createElement("div");
+      meta.className = "recipe-meta";
+
+      const category = document.createElement("span");
+      category.className = "pill success";
+      category.textContent = recipe.category || "Recipe";
+      meta.appendChild(category);
+
+      if (recipe.time) {
+        const time = document.createElement("span");
+        time.className = "pill neutral";
+        time.textContent = recipe.time;
+        meta.appendChild(time);
+      }
+
+      const title = document.createElement("h3");
+      title.textContent = recipe.title || "Untitled recipe";
+
+      const desc = document.createElement("p");
+      desc.textContent = recipe.description || "Shared recipe";
+
+      const ing = document.createElement("p");
+      ing.className = "muted";
+      const ingPreview = (recipe.ingredients || []).slice(0, 3).join(", ");
+      ing.textContent = ingPreview ? `Ingredients: ${ingPreview}${(recipe.ingredients || []).length > 3 ? "…" : ""}` : "Ingredients: added by author";
+
+      const steps = document.createElement("p");
+      steps.className = "muted";
+      const stepsPreview = (recipe.steps || []).slice(0, 2).join(" → ");
+      steps.textContent = stepsPreview ? `Steps: ${stepsPreview}${(recipe.steps || []).length > 2 ? "…" : ""}` : "Steps: provided by author";
+
+      const saved = document.createElement("p");
+      saved.className = "muted";
+      saved.textContent = recipe.source === "seed" ? "Sample recipe (local)" : "Saved locally on this device";
+
+      body.appendChild(meta);
+      body.appendChild(title);
+      body.appendChild(desc);
+      body.appendChild(ing);
+      body.appendChild(steps);
+      body.appendChild(saved);
+
+      card.appendChild(img);
+      card.appendChild(body);
+
+      grid.appendChild(card);
+    });
+  });
+
+  onScrollReveal();
+}
+
+// Hook up recipe forms (modal + dedicated page) to local storage
+function initRecipeForms() {
+  if (!window.RecipeDB) return;
+  const forms = document.querySelectorAll("[data-recipe-form], #addRecipeForm");
+  if (forms.length === 0) return;
+
+  forms.forEach((form) => {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const data = new FormData(form);
+      const title = (data.get("title") || "").trim();
+
+      if (!title) {
+        showToast("Please add a recipe title");
+        return;
+      }
+
+      const recipe = {
+        title,
+        description: (data.get("description") || data.get("summary") || "").trim(),
+        image: (data.get("image") || "").trim(),
+        time: (data.get("time") || "").trim(),
+        category: (data.get("category") || "").trim() || "Homemade",
+        servings: (data.get("servings") || "").trim(),
+        ingredients: (data.get("ingredients") || "").trim(),
+        steps: (data.get("steps") || "").trim(),
+        source: "user"
+      };
+
+      window.RecipeDB.add(recipe);
+      renderUserRecipes();
+      form.reset();
+
+      const dialog = form.closest("dialog");
+      if (dialog) {
+        try {
+          dialog.close();
+        } catch (err) {
+          dialog.removeAttribute("open");
+        }
+      }
+
+      showToast("Recipe saved locally");
+
+      const redirectTarget = form.dataset.redirect;
+      if (redirectTarget) {
+        setTimeout(() => {
+          window.location.href = redirectTarget;
+        }, 300);
+      }
+    });
+  });
+}

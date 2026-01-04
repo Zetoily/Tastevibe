@@ -263,7 +263,7 @@
           <li><a href="#">Help Center</a></li>
           <li><a href="#">Privacy Policy</a></li>
           <li><a href="#">Terms</a></li>
-        </ul>
+        </ul> 
       </div>
       <div>
         <h4>Stay Updated</h4>
@@ -278,6 +278,7 @@
     </div>
   </footer>
 
+  <script src="js/recipe-store.js"></script>
   <script src="js/main.js"></script>
   <script src="js/menu.js"></script>
   <script src="js/slider.js"></script>
@@ -349,7 +350,7 @@
   <dialog id="addRecipeModal" aria-labelledby="addRecipeTitle">
     <button class="close" aria-label="Close" onclick="this.closest('dialog').close()">✕</button>
     <h2 id="addRecipeTitle">Add a Recipe</h2>
-    <form id="addRecipeForm" onsubmit="event.preventDefault(); this.closest('dialog').close(); (function(){const t=document.createElement('div'); t.className='toast'; t.textContent='Recipe submitted (demo)'; document.body.appendChild(t); setTimeout(()=>t.remove(),2000); })();">
+    <form id="addRecipeForm" data-recipe-form>
       <input type="text" name="title" placeholder="Recipe title" required>
       <input type="text" name="image" placeholder="Image URL (optional)">
       <div class="row">
@@ -362,6 +363,7 @@
           <option>Breakfast</option>
         </select>
       </div>
+      <textarea name="description" rows="3" placeholder="Short description"></textarea>
       <textarea name="ingredients" rows="4" placeholder="Ingredients (one per line)"></textarea>
       <textarea name="steps" rows="6" placeholder="Preparation steps"></textarea>
       <div class="actions">
@@ -386,4 +388,3 @@
   </dialog>
 </body>
 </html>
-

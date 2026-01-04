@@ -18,10 +18,42 @@
     </div>
   </header>
 
-  <main class="container">
-    <h1>Add Your Recipe</h1>
-    <p>Placeholder page for adding a recipe. Implement upload and form here.</p>
-    <a class="btn primary" href="index.html">Back to home</a>
+  <main>
+    <section class="page-hero light">
+      <div class="container">
+        <p class="eyebrow">Add Recipe</p>
+        <h1>Save your recipe locally</h1>
+        <p class="lead">Все рецепты сохраняются в браузере (localStorage) — база данных создается прямо в проекте.</p>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="recipe-form-card">
+        <div class="section-header" style="text-align:left;">
+          <h2>Новый рецепт</h2>
+          <p class="muted">Добавьте основные данные, ингредиенты и шаги.</p>
+        </div>
+        <form id="addRecipePageForm" data-recipe-form data-redirect="recipes.html" class="recipe-form-grid">
+          <div class="row">
+            <input class="form-control" type="text" name="title" placeholder="Название рецепта" required>
+            <input class="form-control" type="text" name="category" placeholder="Категория (например, Vegan)">
+          </div>
+          <div class="row">
+            <input class="form-control" type="text" name="time" placeholder="Время (например, 20 min)">
+            <input class="form-control" type="text" name="servings" placeholder="Порций (опционально)">
+          </div>
+          <input class="form-control" type="url" name="image" placeholder="Ссылка на изображение (опционально)">
+          <textarea class="form-control" name="description" rows="3" placeholder="Краткое описание"></textarea>
+          <textarea class="form-control" name="ingredients" rows="4" placeholder="Ингредиенты (каждый с новой строки)" required></textarea>
+          <textarea class="form-control" name="steps" rows="6" placeholder="Шаги приготовления (каждый с новой строки)" required></textarea>
+          <div class="recipe-form-actions">
+            <button type="reset" class="btn ghost">Очистить</button>
+            <button type="submit" class="btn primary">Сохранить рецепт</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
   </main>
 
   <footer class="footer">
@@ -30,6 +62,8 @@
     </div>
   </footer>
 
+  <script src="js/recipe-store.js"></script>
+  <script src="js/main.js"></script>
   <script type="module" src="js/menu.js"></script>
 </body>
 </html>
