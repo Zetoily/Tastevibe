@@ -23,32 +23,32 @@
       <div class="container">
         <p class="eyebrow">Add Recipe</p>
         <h1>Save your recipe locally</h1>
-        <p class="lead">Все рецепты сохраняются в браузере (localStorage) — база данных создается прямо в проекте.</p>
+        <p class="lead">All recipes are stored in your browser (localStorage) — the database lives inside this project.</p>
       </div>
     </section>
 
     <section class="container">
       <div class="recipe-form-card">
         <div class="section-header" style="text-align:left;">
-          <h2>Новый рецепт</h2>
-          <p class="muted">Добавьте основные данные, ингредиенты и шаги.</p>
+          <h2>New recipe</h2>
+          <p class="muted">Add the basics, ingredients, and steps.</p>
         </div>
         <form id="addRecipePageForm" data-recipe-form data-redirect="recipes.html" class="recipe-form-grid">
           <div class="row">
-            <input class="form-control" type="text" name="title" placeholder="Название рецепта" required>
-            <input class="form-control" type="text" name="category" placeholder="Категория (например, Vegan)">
+            <input class="form-control" type="text" name="title" placeholder="Recipe title" required>
+            <input class="form-control" type="text" name="category" placeholder="Category (e.g., Vegan)">
           </div>
           <div class="row">
-            <input class="form-control" type="text" name="time" placeholder="Время (например, 20 min)">
-            <input class="form-control" type="text" name="servings" placeholder="Порций (опционально)">
+            <input class="form-control" type="text" name="time" placeholder="Time (e.g., 20 min)">
+            <input class="form-control" type="text" name="servings" placeholder="Servings (optional)">
           </div>
-          <input class="form-control" type="url" name="image" placeholder="Ссылка на изображение (опционально)">
-          <textarea class="form-control" name="description" rows="3" placeholder="Краткое описание"></textarea>
-          <textarea class="form-control" name="ingredients" rows="4" placeholder="Ингредиенты (каждый с новой строки)" required></textarea>
-          <textarea class="form-control" name="steps" rows="6" placeholder="Шаги приготовления (каждый с новой строки)" required></textarea>
+          <input class="form-control" type="url" name="image" placeholder="Image URL (optional)">
+          <textarea class="form-control" name="description" rows="3" placeholder="Short description"></textarea>
+          <textarea class="form-control" name="ingredients" rows="4" placeholder="Ingredients (one per line)" required></textarea>
+          <textarea class="form-control" name="steps" rows="6" placeholder="Steps (one per line)" required></textarea>
           <div class="recipe-form-actions">
-            <button type="reset" class="btn ghost">Очистить</button>
-            <button type="submit" class="btn primary">Сохранить рецепт</button>
+            <button type="reset" class="btn ghost">Clear</button>
+            <button type="submit" class="btn primary">Save recipe</button>
           </div>
         </form>
       </div>
@@ -56,11 +56,11 @@
 
     <section class="container recipe-listing" data-user-recipes>
       <div class="section-header" style="text-align:left;">
-        <h2>Ваши сохраненные рецепты</h2>
-        <p class="muted">Хранятся локально на этом устройстве.</p>
+        <h2>Your saved recipes</h2>
+        <p class="muted">Stored locally on this device.</p>
       </div>
       <div class="recipe-grid" data-recipes-grid></div>
-      <p class="muted empty-state" data-empty-state>Пока нет сохраненных рецептов — добавьте свой первым.</p>
+      <p class="muted empty-state" data-empty-state>No saved recipes yet — add your first one.</p>
     </section>
 
   </main>
