@@ -22,14 +22,13 @@ if ($category !== '' && $category !== 'All') {
 
 if ($prep_time > 0) {
     if ($prep_time === 1000) {
-        // match recipes with more than 30 minutes; extract numeric minutes from `time` string
-        $sql .= " AND CAST(substr(time, 1, instr(time, ' ') - 1) AS INTEGER) > 30";
+        $sql .= " AND prep_time > 30";
     } else {
-        // compare numeric minutes extracted from `time` (e.g. '20 min')
-        $sql .= " AND CAST(substr(time, 1, instr(time, ' ') - 1) AS INTEGER) <= :prep_time";
+        $sql .= " AND prep_time <= :prep_time";
         $params[':prep_time'] = $prep_time;
     }
 }
+
 
 $stmt = $db->prepare($sql);
 $stmt->execute($params);

@@ -63,14 +63,14 @@ function displayRecipes(recipes) {
     card.className = 'recipe-card reveal';
 
     const imgSrc = recipe.image || 'https://via.placeholder.com/600x400';
-    const timeText = recipe.time || recipe.prep_time || '';
+    const timeText = recipe.prep_time ? recipe.prep_time + ' min' : '';
 
     card.innerHTML = `
       <img src="${imgSrc}" alt="${recipe.title || ''}" loading="lazy">
       <div class="recipe-body">
         <div class="recipe-meta">
           <span class="pill highlight">${recipe.category || ''}</span>
-          <span class="pill neutral">${timeText}${timeText ? ' min' : ''}</span>
+          <span class="pill neutral">${timeText}</span>
         </div>
         <h3>${recipe.title || ''}</h3>
         <p>${recipe.ingredients || ''}</p>
@@ -80,6 +80,8 @@ function displayRecipes(recipes) {
 
     container.appendChild(card);
   });
+}
+
 
   if (typeof window.applyRecipeFilters === 'function') window.applyRecipeFilters();
-}
+
