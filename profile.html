@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TasteVibe | Profile</title>
+
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+
+<header class="header">
+  <a href="index.html" class="logo">TasteVibe</a>
+  <nav>
+    <a href="index.html">Recipes</a>
+    <button id="logout" class="btn-outline">Logout</button>
+  </nav>
+</header>
+
+<main class="container">
+
+  <!-- Профиль -->
+  <section class="profile-card">
+    <h1>My profile</h1>
+    <div id="user-info" class="profile-info">
+      <p>Loading...</p>
+    </div>
+  </section>
+
+  <!-- Мои рецепты -->
+  <section class="my-recipes">
+    <h2>My recipes</h2>
+    <div id="recipes" class="recipes-grid"></div>
+  </section>
+
+</main>
+
+<script src="js/profile.js"></script>
+</body>
+</html>

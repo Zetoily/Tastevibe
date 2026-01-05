@@ -293,6 +293,8 @@
   <script src="js/slider.js"></script>
   <script src="js/effects.js"></script>
   <script src="js/animations.js"></script>
+  <script src="js/load-recipes.js"></script>
+
   <!-- Dialog-based popups -->
   <style>
     dialog {
@@ -330,57 +332,108 @@
   </style>
 
   <dialog id="loginModal" aria-labelledby="loginTitle">
-    <button class="close" aria-label="Close" onclick="this.closest('dialog').close()">✕</button>
-    <h2 id="loginTitle">Login</h2>
-    <form id="loginForm" onsubmit="event.preventDefault(); this.closest('dialog').close(); (function(){const t=document.createElement('div'); t.className='toast'; t.textContent='Signed in (demo)'; document.body.appendChild(t); setTimeout(()=>t.remove(),2000); })();">
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <div class="actions">
-        <button type="button" class="btn ghost modal-close" onclick="this.closest('dialog').close()">Cancel</button>
-        <button type="submit" class="btn primary">Sign in</button>
-      </div>
-    </form>
-  </dialog>
+  <button class="close" aria-label="Close" onclick="this.closest('dialog').close()">✕</button>
+  <h2 id="loginTitle">Login</h2>
+  <form action="backend/login.php" method="post">
+  <input type="text" name="username_or_email" placeholder="Username or Email" required>
+  <input type="password" name="password" placeholder="Password" required>
 
-  <dialog id="signupModal" aria-labelledby="signupTitle">
-    <button class="close" aria-label="Close" onclick="this.closest('dialog').close()">✕</button>
-    <h2 id="signupTitle">Sign up</h2>
-    <form id="signupForm" onsubmit="event.preventDefault(); this.closest('dialog').close(); (function(){const t=document.createElement('div'); t.className='toast'; t.textContent='Account created (demo)'; document.body.appendChild(t); setTimeout(()=>t.remove(),2000); })();">
-      <input type="text" name="name" placeholder="Full name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <div class="actions">
-        <button type="button" class="btn ghost modal-close" onclick="this.closest('dialog').close()">Cancel</button>
-        <button type="submit" class="btn primary">Create account</button>
-      </div>
-    </form>
-  </dialog>
+    <div class="actions">
+      <button type="button" class="btn ghost" onclick="this.closest('dialog').close()">Cancel</button>
+      <button type="submit" class="btn primary">Sign in</button>
+    </div>
+  </form>
+</dialog>
 
-  <dialog id="addRecipeModal" aria-labelledby="addRecipeTitle">
-    <button class="close" aria-label="Close" onclick="this.closest('dialog').close()">✕</button>
-    <h2 id="addRecipeTitle">Add a Recipe</h2>
-    <form id="addRecipeForm" data-recipe-form>
-      <input type="text" name="title" placeholder="Recipe title" required>
-      <input type="text" name="image" placeholder="Image URL (optional)">
-      <div class="row">
-        <input type="text" name="time" placeholder="Time (e.g., 20 min)">
-        <select name="category">
-          <option value="">Category</option>
-          <option>Vegan</option>
-          <option>Dessert</option>
-          <option>Main</option>
-          <option>Breakfast</option>
-        </select>
-      </div>
-      <textarea name="description" rows="3" placeholder="Short description"></textarea>
-      <textarea name="ingredients" rows="4" placeholder="Ingredients (one per line)"></textarea>
-      <textarea name="steps" rows="6" placeholder="Preparation steps"></textarea>
-      <div class="actions">
-        <button type="button" class="btn ghost modal-close" onclick="this.closest('dialog').close()">Cancel</button>
-        <button type="submit" class="btn primary">Submit recipe</button>
-      </div>
-    </form>
-  </dialog>
+<dialog id="signupModal" aria-labelledby="signupTitle">
+  <button class="close" aria-label="Close" onclick="this.closest('dialog').close()">✕</button>
+  <h2 id="signupTitle">Sign up</h2>
+  <form action="backend/signup.php" method="post">
+  <input type="text" name="username" placeholder="Full name" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <input type="password" name="password" placeholder="Password" required>
+    <div class="actions">
+      <button type="button" class="btn ghost" onclick="this.closest('dialog').close()">Cancel</button>
+      <button type="submit" class="btn primary">Sign in</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="addRecipeModal" aria-labelledby="addRecipeTitle">
+
+  <button class="close" aria-label="Close"
+    onclick="this.closest('dialog').close()">✕</button>
+
+  <h2 id="addRecipeTitle">Add a Recipe</h2>
+
+  <form
+    method="POST"
+    action="backend/add_recipe.php"
+    enctype="multipart/form-data"
+  >
+    <input
+      type="text"
+      name="title"
+      placeholder="Recipe title"
+      required
+    >
+
+    <label>
+      Recipe image
+      <input
+        type="file"
+        name="image"
+        accept="image/*"
+      >
+    </label>
+
+    <div class="row">
+      <input
+        type="text"
+        name="time"
+        placeholder="Time (e.g., 20 min)"
+      >
+
+      <select name="category">
+        <option value="">Category</option>
+        <option value="Vegan">Vegan</option>
+        <option value="Dessert">Dessert</option>
+        <option value="Main">Main</option>
+        <option value="Breakfast">Breakfast</option>
+      </select>
+    </div>
+
+    <textarea
+      name="ingredients"
+      rows="4"
+      placeholder="Ingredients (one per line)"
+    ></textarea>
+
+    <textarea
+      name="steps"
+      rows="6"
+      placeholder="Preparation steps"
+    ></textarea>
+
+    <div class="actions">
+      <button
+        type="button"
+        class="btn ghost"
+        onclick="this.closest('dialog').close()"
+      >
+        Cancel
+      </button>
+
+      <button
+        type="submit"
+        class="btn primary"
+      >
+        Submit recipe
+      </button>
+    </div>
+
+  </form>
+</dialog>
 
   <dialog id="communityModal" aria-labelledby="communityTitle">
     <button class="close" aria-label="Close" onclick="this.closest('dialog').close()">✕</button>

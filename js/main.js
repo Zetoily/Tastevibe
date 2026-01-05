@@ -33,50 +33,58 @@ const initParallax = () => {
       const scrolled = window.pageYOffset;
       const rate = scrolled * 0.5;
       
-      if (heroBubbles.length > 0) {
-        heroBubbles[0].style.transform = `translateY(${rate * 0.3}px)`;
-        heroBubbles[1].style.transform = `translateY(${rate * 0.2}px)`;
-      }
-      
-      if (scrolled < window.innerHeight) {
-        heroVisual.style.transform = `translateY(${rate * 0.4}px)`;
-      }
-    });
-  }
-};
-
-// Card hover effects with tilt
-const initCardEffects = () => {
-  const cards = document.querySelectorAll(".recipe-card, .feature-card");
   
-  cards.forEach((card) => {
-    card.addEventListener("mouseenter", (e) => {
-      card.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
-    });
-    
-    card.addEventListener("mousemove", (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      
-      const rotateX = (y - centerY) / 20;
-      const rotateY = (centerX - x) / 20;
-      
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-    });
-    
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = "perspective(1000px) rotateX(0) rotateY(0) translateY(0)";
-    });
-  });
-};
+    // Shared filter implementation used by search + controls
+    const applyFilters = () => {
+      const recipeNodes = document.querySelectorAll('.recipe-card, .recipe-detail');
+      if (recipeNodes.length === 0) return;
+      const category = categorySelect?.value || 'All';
+      const time = timeSelect?.value || 'Any';
+      const query = (document.querySelector('.search-bar input, #search')?.value || '').toLowerCase().trim();
 
-// Image lazy loading with fade-in
-const initLazyImages = () => {
-  const images = document.querySelectorAll("img[data-src]");
+      recipeNodes.forEach((node) => {
+        let show = true;
+
+        // Text match (title + description)
+        const title = (node.querySelector('h3, h1')?.textContent || '').toLowerCase();
+        const desc = (node.querySelector('.lead, p')?.textContent || '').toLowerCase();
+        if (query) {
+          if (!(title.includes(query) || desc.includes(query))) show = false;
+        }
+
+        const pills = node.querySelectorAll('.pill');
+        const timeText = Array.from(pills).find(p => p.textContent.includes('min'))?.textContent || '';
+
+        // Category filter
+        if (category !== 'All') {
+          const hasCategory = Array.from(pills).some(p => p.textContent.toLowerCase().includes(category.toLowerCase()));
+          if (!hasCategory) show = false;
+        }
+
+        // Time filter
+        if (time !== 'Any' && timeText) {
+          const cardTime = parseInt(timeText) || 0;
+          if (time === '0-15 min' && cardTime > 15) show = false;
+          if (time === '15-30 min' && (cardTime <= 15 || cardTime > 30)) show = false;
+          if (time === '30+ min' && cardTime <= 30) show = false;
+        }
+
+        if (show) {
+          node.style.display = '';
+          node.classList.add('filter-match');
+          setTimeout(() => node.classList.remove('filter-match'), 300);
+        } else {
+          node.style.display = 'none';
+        }
+      });
+    };
+
+    if (filterBtn) filterBtn.addEventListener('click', applyFilters);
+    if (categorySelect) categorySelect.addEventListener('change', applyFilters);
+    if (timeSelect) timeSelect.addEventListener('change', applyFilters);
+
+    // expose for other modules (search)
+    window.applyRecipeFilters = applyFilters;
   
   const imageObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
@@ -91,7 +99,7 @@ const initLazyImages = () => {
   });
   
   images.forEach((img) => imageObserver.observe(img));
-};
+});
 
 // Image error handling with fallback
 const initImageErrorHandling = () => {
@@ -144,23 +152,8 @@ const initSearch = () => {
   const searchInput = document.querySelector(".search-bar input, #search");
   
   if (searchInput) {
-    searchInput.addEventListener("input", (e) => {
-      const query = e.target.value.toLowerCase().trim();
-      const recipeCards = document.querySelectorAll(".recipe-card");
-      if (recipeCards.length === 0) return;
-      
-      recipeCards.forEach((card) => {
-        const title = card.querySelector("h3")?.textContent.toLowerCase() || "";
-        const description = card.querySelector("p")?.textContent.toLowerCase() || "";
-        
-        if (title.includes(query) || description.includes(query)) {
-          card.style.display = "";
-          card.classList.add("search-match");
-          setTimeout(() => card.classList.remove("search-match"), 300);
-        } else {
-          card.style.display = query === "" ? "" : "none";
-        }
-      });
+    searchInput.addEventListener("input", () => {
+      if (typeof window.applyRecipeFilters === 'function') window.applyRecipeFilters();
     });
   }
 };
@@ -271,6 +264,7 @@ const initCounters = () => {
 document.addEventListener("DOMContentLoaded", () => {
   window.RecipeDB?.ensureSeeded?.();
   renderUserRecipes();
+  loadServerGrid();
   onScrollReveal();
   window.addEventListener("scroll", onScrollReveal);
   initSmoothScroll();
@@ -504,4 +498,4 @@ function initRecipeForms() {
       }
     });
   });
-}
+};
